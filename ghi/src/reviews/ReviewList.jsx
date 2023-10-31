@@ -10,7 +10,7 @@ const ReviewList = () => {
   let { post_id } = useParams();
 
   const getData = async (post_id) => {
-    const url = `${process.env.REACT_APP_API_HOST}/api/review/${post_id}`;
+    const url = `${process.env.REACT_APP_API_HOST}/api/${post_id}/review`;
     const response = await fetch(url);
     if (response.ok) {
       const data = await response.json();
@@ -43,14 +43,14 @@ const ReviewList = () => {
           Create Review
         </button>
       ) : null}
-      {token ? (
+      {/* {token ? (
         <button
           className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
           onClick={() => navigateToPost()}
         >
           Post
         </button>
-      ) : null}
+      ) : null} */}
       <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <thead>
           <tr>
@@ -58,7 +58,7 @@ const ReviewList = () => {
             <th className="p-4">Trail Name</th>
             <th className="p-4">Created By</th>
             <th className="p-4">Review Body</th>
-            <th className="p-4"> Delete Review</th>
+            {/* <th className="p-4"> Delete Review</th> */}
           </tr>
         </thead>
         <tbody>
@@ -69,14 +69,14 @@ const ReviewList = () => {
                 <td className="p-4">{review.title}</td>
                 <td className="p-4">{review.username}</td>
                 <td className="p-4">{review.body}</td>
-                <td className="p-4">
+                {/* <td className="p-4">
                   <button
                     className="m-4 bg-red-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
                     onClick={() => navigateToReview(review.id)}
                   >
                     delete
                   </button>
-                </td>
+                </td> */}
               </tr>
             );
           })}

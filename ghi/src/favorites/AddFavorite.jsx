@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useToken from "@galvanize-inc/jwtdown-for-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function AddFavoriteForm() {
-    const [trailId, setTrailId] = useState([]);
-    const [userId, setUserId] = useState([]);
+    // const [trailId, setTrailId] = useState([]);
+    // const [userId, setUserId] = useState([]);
+    const [user, setUser] = useState("");
+    const { post_id } = useParams();
     const { token } = useToken();
     const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
+    const fetchLoggedInUserData = async () => {
+      const url = `${process.env.REACT_APP_API_HOST}/api/user`;
+      const response = await fetch(url, {credentials: 'include'});
+      if (response.ok) {
+          const data = await response.json();
+          setUser(data)
+      }
+    };
+
+    useEffect(() => {
+      fetchLoggedInUserData();
+    }, []);
+
+    const handleSubmit = async (event, post_id, user_id) => {
         event.preventDefault();
         const jsDate = new Date();
         const isoDate = jsDate.toISOString().split('T')[0];
         const favoriteData = {
-            post_id: trailId,
-            user_id: userId,
+            post_id: post_id,
+            user_id: user_id,
             created_at: isoDate
         };
 
@@ -40,9 +55,9 @@ function AddFavoriteForm() {
             <div className="card-body">
               <form
                 className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
-                onSubmit={(event) => handleSubmit(event)}
+                onSubmit={(event) => handleSubmit(event, post_id, user.id)}
               >
-                <div className="mb-3">
+                {/* <div className="mb-3">
                   <label className="block text-gray-700 text-sm font-bold mb-2">
                     Trail ID
                   </label>
@@ -69,7 +84,7 @@ function AddFavoriteForm() {
                       setUserId(event.target.value);
                     }}
                   />
-                </div>
+                </div> */}
                 <div>
                   <input
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
