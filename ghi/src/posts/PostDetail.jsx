@@ -16,6 +16,11 @@ const fetchData = async (setPost, setNotFound, post_id) => {
   }
 };
 
+// FetchReviewsData(post_id) to get list of reviews at specific post
+// FetchStatusData(post_id) to get list of status at specific post
+
+// create callback function to check if user.id is in list of reviews or list of status
+
 const PostDetail = () => {
   let { post_id } = useParams();
   const [post, setPost] = useState("");
@@ -82,7 +87,7 @@ const PostDetail = () => {
         {token ? (
           <button
             className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => navigate(`/favorites/add`)}
+            onClick={() => navigate(`/${post.id}/favorites/add`)}
           >
             Add Favorite
           </button>

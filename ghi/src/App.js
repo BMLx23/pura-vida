@@ -62,7 +62,7 @@ function App() {
                 element={<PostUpdate />}
               />
               <Route exact path="/favorites" element={<Favorites />} />
-              <Route exact path="/favorites/add" element={<AddFavorite />} />
+              <Route exact path="/:post_id/favorites/add" element={<AddFavorite />} />
               <Route
                 exact
                 path="/posts/:post_id/review"

@@ -117,7 +117,7 @@ const UserProfilePage = () => {
           </tbody>
         </table>
 
-        <h3 className="p-4">List of Status</h3>
+        <h3 className="bg-white shadow-md rounded text-lg font-bold px-8 pt-4 pb-2">List of Status</h3>
         <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <thead>
             <tr>
@@ -157,7 +157,7 @@ const UserProfilePage = () => {
           </tbody>
         </table>
 
-        <h3 className="p-4">List of Favorites</h3>
+        <h3 className="bg-white shadow-md rounded text-lg font-bold px-8 pt-4 pb-2">List of Favorites</h3>
         <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <thead>
             <tr>
