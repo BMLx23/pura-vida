@@ -37,7 +37,8 @@ def get_review_by_id(
     return repo.get_by_id(post_id)
 
 
-@router.get("/api/review/{review_id}", response_model=Union[ReviewGetOut, Error])
+@router.get("/api/review/{review_id}",
+            response_model=Union[ReviewGetOut, Error])
 def get_specific_review(
     review_id: int,
     repo: ReviewRepository = Depends()

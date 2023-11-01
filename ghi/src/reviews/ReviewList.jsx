@@ -22,15 +22,8 @@ const ReviewList = () => {
     getData(post_id);
   }, [post_id]);
 
-  const navigateToReview = async (review_id) => {
-    navigate(`/${post_id}/reviews/${review_id}`);
-  };
-
   const navigateToCreateReview = async () => {
     navigate(`/posts/${post_id}/review`);
-  };
-  const navigateToPost = async () => {
-    navigate(`/posts/${post_id}`);
   };
 
   return (
@@ -43,14 +36,6 @@ const ReviewList = () => {
           Create Review
         </button>
       ) : null}
-      {/* {token ? (
-        <button
-          className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-          onClick={() => navigateToPost()}
-        >
-          Post
-        </button>
-      ) : null} */}
       <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <thead>
           <tr>
@@ -58,7 +43,6 @@ const ReviewList = () => {
             <th className="p-4">Trail Name</th>
             <th className="p-4">Created By</th>
             <th className="p-4">Review Body</th>
-            {/* <th className="p-4"> Delete Review</th> */}
           </tr>
         </thead>
         <tbody>
@@ -69,14 +53,6 @@ const ReviewList = () => {
                 <td className="p-4">{review.title}</td>
                 <td className="p-4">{review.username}</td>
                 <td className="p-4">{review.body}</td>
-                {/* <td className="p-4">
-                  <button
-                    className="m-4 bg-red-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-                    onClick={() => navigateToReview(review.id)}
-                  >
-                    delete
-                  </button>
-                </td> */}
               </tr>
             );
           })}

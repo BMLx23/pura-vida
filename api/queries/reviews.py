@@ -158,7 +158,9 @@ class ReviewRepository:
         except Exception:
             return {"message": "could not delete review"}
 
-    def update_review(self, reviews_id: int, reviews: ReviewIn) -> Union[ReviewOut, Error]:
+    def update_review(self,
+                      reviews_id: int,
+                      reviews: ReviewIn) -> Union[ReviewOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:

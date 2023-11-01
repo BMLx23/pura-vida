@@ -32,20 +32,6 @@ const PostDetail = () => {
     fetchData(setPost, setNotFound, post_id);
   }, [setPost, setNotFound, post_id]);
 
-  const navigateToCreateReview = async (post_id) => {
-    navigate(`/posts/${post_id}/review`);
-  };
-  const navigateToReviewList = async (post_id) => {
-    navigate(`/posts/${post_id}/reviews`);
-  };
-
-  const navigateToStatusList = async (post_id) => {
-    navigate(`/posts/${post_id}/statuses`);
-  };
-
-  const navigateToCreateStatus = async (post_id) => {
-    navigate(`/posts/${post_id}/status`);
-  };
   if (notFound) {
     return (
       <div>Post Not found!</div>
@@ -53,36 +39,6 @@ const PostDetail = () => {
   } else {
     return (
       <div>
-        {/* {token ? (
-          <button
-            className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => navigateToCreateReview(post_id)}
-          >
-            Create Review
-          </button>
-        ) : null} */}
-        {/* {token ? (
-          <button
-            className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => navigateToReviewList(post_id)}
-          >
-            Review List
-          </button>
-        ) : null} */}
-        {/* <button
-          className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-          onClick={() => navigateToStatusList(post_id)}
-        >
-          Trail Status
-        </button> */}
-        {/* {token ? (
-          <button
-            className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-            onClick={() => navigateToCreateStatus(post_id)}
-          >
-            Create Status
-          </button>
-        ) : null} */}
         <div>
         {token ? (
           <button

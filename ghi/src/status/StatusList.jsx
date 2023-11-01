@@ -25,10 +25,6 @@ const StatusList = () => {
     return () => clearInterval(interval);
   }, [post_id]);
 
-  const navigateToPostStatus = async (post_id) => {
-    navigate(`/posts/${post_id}`);
-  };
-
   const navigateToCreateStatus = async (post_id) => {
     navigate(`/posts/${post_id}/status`);
   };
