@@ -24,6 +24,7 @@ import UserProfilePage from "./users/UserProfilePage";
 import PostUpdate from "./posts/PostUpdate";
 import LogoutForm from "./LogoutForm";
 import PostDelete from "./posts/PostDelete";
+import ReviewUpdate from "./reviews/ReviewUpdate";
 
 
 function App() {
@@ -34,8 +35,10 @@ function App() {
     <div>
       <BrowserRouter basename={basename}>
         <div className="bg-mountain bg-no-repeat bg-cover h-screen overflow-visible">
+          <div className="h-screen overflow-scroll">
           <AuthProvider baseUrl={process.env.REACT_APP_API_HOST}>
             <Navbar />
+            <div className="w-[80vw]">
             <Routes>
               <Route exact path="/" element={<Main />} />
               <Route exact path="/profile" element={<UserProfilePage />} />
@@ -59,7 +62,7 @@ function App() {
                 element={<PostUpdate />}
               />
               <Route exact path="/favorites" element={<Favorites />} />
-              <Route exact path="/favorites/add" element={<AddFavorite />} />
+              <Route exact path="/:post_id/favorites/add" element={<AddFavorite />} />
               <Route
                 exact
                 path="/posts/:post_id/review"
@@ -74,6 +77,11 @@ function App() {
                 exact
                 path="/:post_id/reviews/:review_id"
                 element={<ReviewDelete />}
+              />
+              <Route
+                exact
+                path="/reviews/:review_id/update"
+                element={<ReviewUpdate />}
               />
               <Route
                 exact
@@ -96,7 +104,9 @@ function App() {
                 element={<StatusUpdate />}
               />
             </Routes>
+            </div>
           </AuthProvider>
+          </div>
         </div>
       </BrowserRouter>
     </div>

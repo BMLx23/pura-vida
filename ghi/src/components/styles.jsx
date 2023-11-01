@@ -3,7 +3,7 @@ export const navbarStyles = {
     width: 320,
     flexShrink: 0,
     "& .MuiDrawer-paper": {
-      width: 245,
+      width: "17vw",
       boxSizing: "border-box",
       backgroundColor: "#93c47d",
       color: "rgba(255, 255, 255, 0.7)",

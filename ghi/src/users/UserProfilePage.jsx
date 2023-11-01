@@ -117,7 +117,7 @@ const UserProfilePage = () => {
           </tbody>
         </table>
 
-        <h3 className="p-4">List of Status</h3>
+        <h3 className="bg-white shadow-md rounded text-lg font-bold px-8 pt-4 pb-2">List of Status</h3>
         <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <thead>
             <tr>
@@ -157,12 +157,13 @@ const UserProfilePage = () => {
           </tbody>
         </table>
 
-        <h3 className="p-4">List of Favorites</h3>
+        <h3 className="bg-white shadow-md rounded text-lg font-bold px-8 pt-4 pb-2">List of Favorites</h3>
         <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <thead>
             <tr>
               <th className="p-4">Trail Name</th>
               <th className="p-4">Saved On</th>
+              <th className="p-4">Remove</th>
             </tr>
           </thead>
           <tbody>
@@ -175,6 +176,7 @@ const UserProfilePage = () => {
                     </button>
                   </td>
                   <td className="p-4">{favorite.created_at}</td>
+                  <td className="p-4">"remove button"</td>
                 </tr>
               );
             })}
@@ -219,13 +221,15 @@ const UserProfilePage = () => {
           </tbody>
         </table>
 
-        <h3 className="p-4">List of Reviews</h3>
+        <h3 className="bg-white shadow-md rounded text-lg font-bold px-8 pt-4 pb-2">List of Reviews</h3>
         <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
           <thead>
             <tr>
               <th className="p-4">Trail Name</th>
+              <th className="p-4">Rating</th>
               <th className="p-4">Review</th>
               <th className="p-4">Created On</th>
+              <th className="p-4">Update</th>
               <th className="p-4">Delete</th>
             </tr>
           </thead>
@@ -238,8 +242,14 @@ const UserProfilePage = () => {
                       {review.title}
                     </button>
                   </td>
+                  <td className="p-4">{review.rating}</td>
                   <td className="p-4">{review.body}</td>
                   <td className="p-4">{review.created_at}</td>
+                  <td className="p-4">
+                    <button className="m-4 bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline" onClick={() => navigate(`/reviews/${review.id}/update`)}>
+                      Update
+                    </button>
+                  </td>
                   <td className="p-4">
                     <button className="m-4 bg-red-500 hover:bg-red-400 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline" onClick={() => navigate(`/${review.post_id}/reviews/${review.id}`)}>
                       Delete
