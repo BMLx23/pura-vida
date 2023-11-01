@@ -25,7 +25,7 @@ const PostDetail = () => {
   let { post_id } = useParams();
   const [post, setPost] = useState("");
   const [notFound, setNotFound] = useState(false);
-  const token = useToken();
+  const { token } = useToken();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const PostDetail = () => {
         <div>
         {token ? (
           <button
-            className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
+            className="m-4 bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
             onClick={() => navigate(`/${post.id}/favorites/add`)}
           >
             Add Favorite

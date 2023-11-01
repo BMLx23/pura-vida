@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from queries.accounts import pool
 from typing import Optional, Union, List
+from datetime import date
 
 
 class Error(BaseModel):
@@ -13,6 +14,7 @@ class StatusIn(BaseModel):
     condition: Optional[int]
     foot_traffic: Optional[int]
     is_open: int
+    created_on: date
 
 
 class StatusGetOut(BaseModel):
@@ -22,6 +24,7 @@ class StatusGetOut(BaseModel):
     condition: int
     foot_traffic: int
     is_open: int
+    created_on: date
     username: str
     title: str
 
@@ -33,6 +36,7 @@ class StatusOut(BaseModel):
     condition: int
     foot_traffic: int
     is_open: int
+    created_on: date
 
 
 class StatusRepository:
@@ -46,9 +50,10 @@ class StatusRepository:
                     post_id,
                     condition,
                     foot_traffic,
-                    is_open)
+                    is_open,
+                    created_on)
                     VALUES
-                    (%s, %s, %s, %s, %s)
+                    (%s, %s, %s, %s, %s, %s)
                     RETURNING id
                     """,
                     [
@@ -56,7 +61,8 @@ class StatusRepository:
                         status.post_id,
                         status.condition,
                         status.foot_traffic,
-                        status.is_open
+                        status.is_open,
+                        status.created_on
                     ]
                 )
                 id = result.fetchone()[0]
@@ -77,6 +83,7 @@ class StatusRepository:
                     , condition = %s
                     , foot_traffic = %s
                     , is_open = %s
+                    , created_on = %s
                     WHERE id = %s
                     """,
                     [
@@ -85,6 +92,7 @@ class StatusRepository:
                         status.condition,
                         status.foot_traffic,
                         status.is_open,
+                        status.created_on,
                         status_id
                     ]
                 )
@@ -104,6 +112,7 @@ class StatusRepository:
                             s.condition,
                             s.foot_traffic,
                             s.is_open,
+                            s.created_on,
                             u.username,
                             p.title
                         FROM status as s
@@ -122,8 +131,9 @@ class StatusRepository:
                             condition=record[3],
                             foot_traffic=record[4],
                             is_open=record[5],
-                            username=record[6],
-                            title=record[7]
+                            created_on=record[6],
+                            username=record[7],
+                            title=record[8]
                         )
                         result.append(status)
                     return result
@@ -157,6 +167,7 @@ class StatusRepository:
                             s.condition,
                             s.foot_traffic,
                             s.is_open,
+                            s.created_on,
                             u.username,
                             p.title
                         FROM status as s
@@ -173,8 +184,9 @@ class StatusRepository:
                             condition=record[3],
                             foot_traffic=record[4],
                             is_open=record[5],
-                            username=record[6],
-                            title=record[7]
+                            created_on=record[6],
+                            username=record[7],
+                            title=record[8]
                         )
                         result.append(status)
                     return result

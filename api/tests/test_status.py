@@ -19,9 +19,10 @@ class CreateStatusRepo:
             "id": 1,
             "user_id": 1,
             "post_id": 1,
-            "condition": 6,
-            "foot_traffic": 5,
-            "is_open": 7
+            "condition": 3,
+            "foot_traffic": 1,
+            "is_open": 2,
+            "created_on": "2023-11-01"
         }
         result.update(status)
         return result
@@ -64,18 +65,20 @@ def test_create_status():
     json = {
             "user_id": 1,
             "post_id": 1,
-            "condition": 6,
-            "foot_traffic": 5,
-            "is_open": 7
+            "condition": 3,
+            "foot_traffic": 1,
+            "is_open": 2,
+            "created_on": "2023-11-01"
         }
 
     expected = {
             "id": 1,
             "user_id": 1,
             "post_id": 1,
-            "condition": 6,
-            "foot_traffic": 5,
-            "is_open": 7
+            "condition": 3,
+            "foot_traffic": 1,
+            "is_open": 2,
+            "created_on": "2023-11-01"
         }
 
     # Act

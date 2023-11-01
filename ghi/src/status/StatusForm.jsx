@@ -28,12 +28,18 @@ const StatusForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const _date = new Date();
+    const month = _date.getMonth() + 1;
+    const day = _date.getDate();
+    const year = _date.getFullYear();
+
     const data = {
       user_id: userId,
       post_id: post_id,
       condition: condition,
       foot_traffic: footTraffic,
       is_open: isOpen,
+      created_on: `${year}-${month}-${day}`
     };
     const statusUrl = `${process.env.REACT_APP_API_HOST}/api/status`;
     const fetchOption = {
@@ -47,7 +53,7 @@ const StatusForm = () => {
     const response = await fetch(statusUrl, fetchOption);
     if (response.ok) {
       event.target.reset();
-      navigate(`/posts/${post_id}/statuses`);
+      navigate(`/posts/${post_id}`);
     }
   };
   if (token) {

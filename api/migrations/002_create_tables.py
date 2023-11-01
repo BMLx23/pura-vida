@@ -72,7 +72,8 @@ steps = [
             post_id INTEGER REFERENCES posts(id) ON DELETE CASCADE NOT NULL,
             condition INTEGER,
             foot_traffic INTEGER,
-            is_open INTEGER NOT NULL
+            is_open INTEGER NOT NULL,
+            created_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
         );
         """,
         """

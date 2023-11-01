@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router-dom";
 
 const StatusList = () => {
   const [status, setStatus] = useState([]);
+  const [todaysDate, setTodaysDate] = useState('');
+  const [todaysStatus, setTodaysStatus] = useState([]);
   const navigate = useNavigate();
   const { token } = useToken();
   let { post_id } = useParams();
@@ -15,6 +17,12 @@ const StatusList = () => {
       const data = await response.json();
       setStatus(data);
     }
+    const _date = new Date();
+    const month = _date.getMonth() + 1;
+    const day = _date.getDate();
+    const year = _date.getFullYear();
+    const today = `${year}-${month}-${day}`;
+    setTodaysDate(today);
   };
 
   useEffect(() => {
@@ -24,6 +32,15 @@ const StatusList = () => {
     }, 15000);
     return () => clearInterval(interval);
   }, [post_id]);
+
+  const filteredStatus = async (status, todaysDate) => {
+    const listOfTodaysStatuses = status.filter((stat) => stat.created_on === todaysDate)
+    setTodaysStatus(listOfTodaysStatuses)
+  };
+
+  useEffect(() => {
+    filteredStatus(status, todaysDate);
+  }, [status, todaysDate]);
 
   const navigateToCreateStatus = async (post_id) => {
     navigate(`/posts/${post_id}/status`);
@@ -53,25 +70,19 @@ const StatusList = () => {
               <th className="p-4">Foot Traffic</th>
               <th className="p-4">Is it open?</th>
               <th className="p-4">Status by</th>
+              {/* <th className="p-4">Created On</th> */}
             </tr>
           </thead>
           <tbody>
-            {status.map((status) => {
+            {todaysStatus.map((stat) => {
               return (
-                <tr key={status.id}>
-                  <td className="p-4">{status.title}</td>
-                  <td className="p-4">{status.condition}</td>
-                  <td className="p-4">{status.foot_traffic}</td>
-                  <td className="p-4">{status.is_open}</td>
-                  <td className="p-4">{status.username}</td>
-                  {/* <td>
-                    <button
-                      className="m-4 bg-blue-500 hover:bg-blue-100 text-white font-bold py-1 px-1 rounded focus:outline-none focus:shadow-outline"
-                      onClick={() => navigateToPostStatus(post_id)}
-                    >
-                      View
-                    </button>
-                  </td> */}
+                <tr key={stat.id}>
+                  <td className="p-4">{stat.title}</td>
+                  <td className="p-4">{stat.condition}</td>
+                  <td className="p-4">{stat.foot_traffic}</td>
+                  <td className="p-4">{stat.is_open}</td>
+                  <td className="p-4">{stat.username}</td>
+                  {/* <td className="p-4">{status.created_on}</td> */}
                 </tr>
               );
             })}
