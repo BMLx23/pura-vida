@@ -3,8 +3,13 @@ from routers import users, posts, favorites, reviews, status
 from fastapi.middleware.cors import CORSMiddleware
 from authenticator import authenticator
 import os
+from cronjobs.jobs import scheduler
+
 
 app = FastAPI()
+
+scheduler.start()
+
 app.include_router(authenticator.router, tags=["Authentication"])
 app.include_router(users.router, tags=["User"])
 app.include_router(posts.router, tags=["Posts"])

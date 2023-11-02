@@ -21,7 +21,7 @@ const StatusList = () => {
     const month = _date.getMonth() + 1;
     const day = _date.getDate();
     const year = _date.getFullYear();
-    const today = `${year}-${month}-${day}`;
+    const today = day < 10 ? `${year}-${month}-0${day}` : `${year}-${month}-${day}`;
     setTodaysDate(today);
   };
 

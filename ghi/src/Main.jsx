@@ -22,7 +22,7 @@ export const Main = () => {
       <div className="grid grid-cols-3 col-span-5 gap-4">
         {posts.map((post) => {
           return (
-            <div className="bg-white bg-opacity-30 max-w-sm rounded overflow-hidden shadow-xl">
+            <div key={post.id} className="bg-white bg-opacity-30 max-w-sm rounded overflow-hidden shadow-xl">
               <img
                 className="w-full"
                 src="https://images.unsplash.com/photo-1543039625-14cbd3802e7d?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b3V0ZG9vcnxlbnwwfHwwfHx8MA%3D%3D"

@@ -10,6 +10,7 @@ const StatusUpdate = () => {
   const [condition, setCondition] = useState("");
   const [footTraffic, setFootTraffic] = useState("");
   const [isOpen, setIsOpen] = useState("");
+  // const [createdOn, setCreatedOn] = useState("")
   const { token } = useToken();
   const navigate = useNavigate();
 
@@ -29,12 +30,18 @@ const StatusUpdate = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const _date = new Date();
+    const month = _date.getMonth() + 1;
+    const day = _date.getDate();
+    const year = _date.getFullYear();
+
     const data = {
       user_id: userId,
       post_id: postId,
       condition: condition,
       foot_traffic: footTraffic,
       is_open: isOpen,
+      created_on: `${year}-${month}-${day}`
     };
 
     const statusUrl = `${process.env.REACT_APP_API_HOST}/api/status/${status_id}`;
