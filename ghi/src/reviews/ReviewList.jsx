@@ -36,7 +36,7 @@ const ReviewList = () => {
           Create Review
         </button>
       ) : null}
-      <table className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <table className="bg-white bg-opacity-40 shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <thead>
           <tr>
             <th className="p-4">Trail Rating</th>
